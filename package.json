@@ -30,7 +30,6 @@
     "font-awesome": "^4.7.0",
     "hoek": "^5.0.4",
     "jquery": "^3.3.1",
-    "parsejson": "0.0.3",
     "popper.js": "^1.14.3",
     "rxjs": "^6.0.0",
     "url-parse": "^1.4.3",
