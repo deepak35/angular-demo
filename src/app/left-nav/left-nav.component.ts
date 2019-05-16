@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Content } from '../app.constants';
 
 @Component({
   selector: 'left-nav',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./left-nav.component.css']
 })
 export class LeftNavComponent implements OnInit {
-
-  constructor() { }
+  public content: any;
+  constructor() {
+    this.content = Content
+   }
 
   ngOnInit() {
   }

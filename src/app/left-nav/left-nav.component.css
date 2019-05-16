@@ -1,4 +1,10 @@
 .left-nav {
     background-color: darkcyan;
-    padding-left: 5px;
+    height: 100%;
+}
+button {
+    background-color: inherit;
+}
+button:hover {
+    background-color: lightcyan
 }

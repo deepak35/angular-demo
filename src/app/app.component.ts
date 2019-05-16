@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Content } from './app.constants';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public content: any;
+
+  constructor() {
+    this.content = Content;
+  }
 }
