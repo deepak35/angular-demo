@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Content } from '../app.constants';
+
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,6 +8,7 @@ import { Content } from '../app.constants';
 })
 export class DashboardComponent implements OnInit {
   public content: any;
+  public blockchainCreated: boolean = true;
   constructor() { 
     this.content = Content
   }
@@ -15,5 +17,9 @@ export class DashboardComponent implements OnInit {
     
   }
 
+  createGenesisBlock() {
+    console.log("clicked");
+    this.blockchainCreated = true;
+  }
 
 }

@@ -7,12 +7,14 @@ import { LeftNavComponent } from './left-nav/left-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BlockchainComponent } from './dashboard/blockchain/blockchain.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LeftNavComponent,
-    DashboardComponent
+    DashboardComponent,
+    BlockchainComponent
   ],
   imports: [
     BrowserModule,

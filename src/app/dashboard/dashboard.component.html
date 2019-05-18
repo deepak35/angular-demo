@@ -1,8 +1,13 @@
 <div class="dashboard">
-   <div class="row ml-0 genesis-btn">
-       <button class="btn btn-primary">
+   <div *ngIf="!blockchainCreated" class="row ml-0 genesis-btn">
+       <button class="btn btn-primary" (click)="createGenesisBlock()">
             <i class="fa fa-plus"></i>
             <span class="ml-2">{{content.createBlockchain}}</span>
        </button>
    </div>
+
+
+   <app-blockchain *ngIf="blockchainCreated"
+                    [blockchainCreated]="blockchainCreated">
+   </app-blockchain>
 </div>

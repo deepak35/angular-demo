@@ -1,0 +1,21 @@
+.blockchain {
+    justify-content: center;
+}
+.card {
+    width: 30%;
+    border: .1rem black solid;
+}
+
+.block-heading {
+    margin-bottom: 0;
+    padding: .3rem 0;
+    border-bottom: .1rem blue solid;
+}
+.block-details {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: darkviolet
+}
