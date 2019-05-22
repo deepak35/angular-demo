@@ -1,4 +1,4 @@
 export const ChainProperties = {
-    'difficulty': 2,
+    'difficulty': 3,
     'blockReward': 20
 };

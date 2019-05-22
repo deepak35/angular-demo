@@ -18,7 +18,7 @@ export class Block {
     }
 
     public mineBlock(difficulty: number) {
-        const checkString = Array(difficulty).fill(difficulty).join('');
+        const checkString = Array(difficulty).fill(0).join('');
         let hash = this.calculateBlockHash();
 
         while (hash.substr(0, difficulty) !== checkString) {
@@ -27,5 +27,5 @@ export class Block {
         }
 
         this.blockHash = hash;
-      }
+       }
 }

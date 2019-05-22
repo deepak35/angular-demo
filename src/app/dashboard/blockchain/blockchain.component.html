@@ -1,14 +1,13 @@
-<div class="row ml-0 blockchain">
-  
-  <div class="card">
-    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-    <div class="card-body p-0">
-      <h5 class="card-title text-center mb-0 block-heading">Card title</h5>
-      <p class="card-text text-center">up the bulk sgg ge ge rgwerg erg of the card's content.</p>
-      <button href="#" class="btn btn-primary block-details">Go somewhere</button>
-    </div>
-  </div>
+<div class="row ml-0 pt-2 justify-content-center">
 
-
+      <app-block-view *ngFor="let block of blockChain.chain; let i = index"
+                      [block]="block"
+                      [index]="i">
+      </app-block-view>
 
 </div>
+
+<div class="row justify-content-center mt-3">
+        <button type="button" class="btn btn-outline-success">{{content.addTransactions}}</button>
+</div>
+

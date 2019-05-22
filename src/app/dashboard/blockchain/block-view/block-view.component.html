@@ -1,0 +1,23 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-header">{{content.blockContent.header}} #{{index}}</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+          <h5 class="card-title">{{content.blockContent.timestamp}}</h5>
+          <p class="card-text">{{block.timestamp}}</p>
+      </li>
+      <li class="list-group-item">
+          <h5 class="card-title">{{content.blockContent.previousHash}}</h5>
+          <p class="card-text">{{block.previousBlockHash}}</p>
+      </li>
+      <li class="list-group-item">
+          <h5 class="card-title">{{content.blockContent.nonce}}</h5>
+          <p class="card-text">{{block.nonce}}</p>
+      </li>
+      <li class="list-group-item border-bottom-0">
+          <h5 class="card-title">{{content.blockContent.hash}}</h5>
+          <p class="card-text">{{block.blockHash}}</p>
+      </li>
+    </ul>
+
+    <button href="#" class="btn btn-outline-secondary">{{content.blockContent.transactionDetailsButtonLabel}}</button>
+  </div>
