@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Block } from '../model/block';
 import { Blockchain } from '../model/blockchain';
-import { BlockService } from '../services/block.service';
+import { BlockchainService } from '../services/blockchain.service';
 import { ChainProperties } from '../model/blockchainProperties';
 import { Content } from 'src/app/app.constants';
 
@@ -19,17 +19,14 @@ export class BlockchainComponent implements OnInit {
 
   public blockChain: Blockchain;
 
-  constructor(private _blockService: BlockService) { }
+  constructor(private _blockchainService: BlockchainService) { }
 
   ngOnInit() {
-
     this.content = Content;
-
-    const genesisBlock = new Block(new Date(), [], '0');
-    genesisBlock.mineBlock(ChainProperties.difficulty);
-
-    this.blockChain = new Blockchain([genesisBlock], ChainProperties.difficulty, ChainProperties.blockReward);
-
+    this.blockChain = this._blockchainService.createBlockchain(ChainProperties.difficulty, ChainProperties.blockReward);
   }
 
+  addTransaction(){
+    
+  }
 }

@@ -1,4 +1,5 @@
 import {SHA256} from 'crypto-js';
+import { Transaction } from './transaction';
 
 export class Block {
     public timestamp: any;
@@ -27,5 +28,5 @@ export class Block {
         }
 
         this.blockHash = hash;
-       }
+    }
 }

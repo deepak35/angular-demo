@@ -1,10 +1,14 @@
 <div class="left-nav">
 
   <div class="list-group pl">
-    <button type="button" class="btn list-group-item list-group-item-action">
+    <button routerLink="/dashboard" type="button" class="btn list-group-item list-group-item-action">
         <i class="fa fa-bitcoin"></i>
         <span class="ml-1">{{content.dashboard}}</span>
     </button>
+    <button routerLink="/pendingTransactions" type="button" class="btn list-group-item list-group-item-action">
+      <i class="fa fa-bitcoin"></i>
+      <span class="ml-1">{{content.pendingTransactions}}</span>
+  </button>
     <button type="button" class="btn list-group-item list-group-item-action">
         <i class="fa fa-cog"></i>
         <span class="ml-1">{{content.settings}}</span>

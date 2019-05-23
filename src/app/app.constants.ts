@@ -1,6 +1,7 @@
 export const Content = {
     dashboard : 'Dashboard',
     settings : 'Settings',
+    pendingTransactions: 'Pending Transactions',
 
     createBlockchain: 'Create Genesis Block',
     addTransactions: 'Add Transactions',
