@@ -4,6 +4,7 @@ import { Blockchain } from '../model/blockchain';
 import { BlockchainService } from '../services/blockchain.service';
 import { ChainProperties } from '../model/blockchainProperties';
 import { Content } from 'src/app/app.constants';
+import { AddTransactionService } from '../services/add-transaction.service';
 
 @Component({
   selector: 'app-blockchain',
@@ -23,6 +24,8 @@ export class BlockchainComponent implements OnInit {
 
   ngOnInit() {
     this.content = Content;
+    console.log("BLOCKCHAIN VIEW");
+    
     this.blockChain = this._blockchainService.createBlockchain(ChainProperties.difficulty, ChainProperties.blockReward);
   }
 

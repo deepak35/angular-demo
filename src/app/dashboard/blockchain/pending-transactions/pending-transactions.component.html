@@ -1,0 +1,27 @@
+<div class="row justify-content-center">
+
+  <div *ngIf="!pendingTransactionsAvalable" class="alert alert-info" role="alert">
+      No pending transactions. Click add transactiosn to add.
+  </div>
+    
+  <table *ngIf="pendingTransactionsAvalable" class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Sender</th>
+            <th scope="col">Reciever</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of pendingTransactions; let i = index">
+            <th scope="row">{{i}}</th>
+            <td>{{transaction.sender}}</td>
+            <td>{{transaction.reciever}}</td>
+            <td>{{transaction.amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+

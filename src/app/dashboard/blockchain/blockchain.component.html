@@ -1,13 +1,4 @@
-<div class="row ml-0 pt-2 justify-content-center">
-
-      <app-block-view *ngFor="let block of blockChain.chain; let i = index"
-                      [block]="block"
-                      [index]="i">
-      </app-block-view>
-
-</div>
-
-<div class="row justify-content-center mt-3">
-        <button type="button"  routerLink="/new/transaction" class="btn btn-outline-success">{{content.addTransactions}}</button>
-</div>
-
+<app-block-view *ngFor="let block of blockChain.chain; let i = index"
+                  [block]="block"
+                  [index]="i">
+</app-block-view>

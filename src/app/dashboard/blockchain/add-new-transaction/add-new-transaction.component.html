@@ -27,3 +27,8 @@
   <button [disabled]="!newTransactionForm.valid" type="submit" (click)="addTransaction()" class="btn btn-primary">Add transaction</button>
 </form>
 </div>
+<div *ngIf="showSuccessMsg" class="row mt-4">
+  <app-alert-message [typeOfAlert]="content.alertType.success"
+                     [alertMessage]="content.alertMessages.pendingTransaction">
+  </app-alert-message>
+</div>
