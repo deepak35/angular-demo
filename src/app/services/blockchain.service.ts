@@ -18,10 +18,21 @@ export class BlockchainService {
     return genesisBlock;
   }
 
-  public createBlockchain(chainDifficulty: number, blockReward: number){
+  public createBlockchain(chainDifficulty: number, blockReward: number, blockTransactions: number){
     const genesisBlock = this.createGenesisBlock(chainDifficulty);
-    const newBlockchain = new Blockchain([genesisBlock], chainDifficulty, blockReward);
+    const newBlockchain = new Blockchain([genesisBlock], chainDifficulty, blockReward, blockTransactions);
 
     return newBlockchain;
+  }
+
+  public mineBlock(blockchain: Blockchain){
+    const newTransactions: Array<Transaction> = blockchain.pendingTransactions.splice(0, blockchain.blockTransactionsNumber);
+    const lastBlock = blockchain.getLastBlock();
+    const newBlock: Block = new Block(new Date(), newTransactions, lastBlock.blockHash);
+    newBlock.mineBlock(blockchain.difficulty);
+
+    blockchain.chain.push(newBlock);
+
+    return blockchain;
   }
 }

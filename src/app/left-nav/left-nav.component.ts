@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Content } from '../../app.constants';
+import { Content } from '../app.constants';
 import { DashboardViewObservableService } from '../services/dashboard-view.observable.service';
 
 @Component({
@@ -16,6 +16,15 @@ export class LeftNavComponent implements OnInit {
   ngOnInit() {
     console.log("LEFT VIEW");
 
+  }
+
+  setBlockchainView(){
+    const newView = {};
+    newView[Content.dashboardView.blockchain] = true;
+    newView[Content.dashboardView.addTransaction] = false;
+    newView[Content.dashboardView.pendingTransaction] = false;
+
+    this._dashboardViewService.setDashboardView(newView);
   }
 
   setPendingTransactionView(){

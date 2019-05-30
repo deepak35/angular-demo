@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Transaction } from '../../model/transaction';
 import { Content } from 'src/app/app.constants';
 
@@ -10,12 +10,14 @@ import { Content } from 'src/app/app.constants';
 export class PendingTransactionsComponent implements OnInit {
 
   public content: any = Content;
+  @Input('pendingTransactions')
   public pendingTransactions: Array<Transaction> = [];
-  public pendingTransactionsAvalable = false;
+  //public pendingTransactionsAvalable = false;
   constructor() { }
 
   ngOnInit() {
-    console.log("PENDING VIEW");
+    console.log('PENDING VIEW');
+    
 
   }
 
