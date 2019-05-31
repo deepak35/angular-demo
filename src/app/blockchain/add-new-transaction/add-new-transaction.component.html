@@ -1,4 +1,4 @@
-<div class="row">
+
 <form [formGroup]="newTransactionForm">
   <div class="form-group">
     <label for="fromAddress">From</label>
@@ -24,9 +24,9 @@
   </div>
   <div *ngIf="newTransactionForm.controls['amount'].errors?.min">min should be 0.001</div>
   <div *ngIf="newTransactionForm.controls['amount'].errors?.pattern">Enter valid character</div>
-  <button [disabled]="!newTransactionForm.valid" type="submit" (click)="addTransaction()" class="btn btn-primary">Add transaction</button>
+  <button [disabled]="!newTransactionForm.valid" type="submit" (click)="addTransaction()" class="btn btn-primary w-100">Add transaction</button>
 </form>
-</div>
+
 <div *ngIf="showSuccessMsg" class="row mt-4">
   <app-alert-message [typeOfAlert]="content.alertType.success"
                      [alertMessage]="content.alertMessages.pendingTransaction">

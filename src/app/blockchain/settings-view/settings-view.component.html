@@ -1,0 +1,28 @@
+
+<form [formGroup]="settingsForm">
+    <div class="form-group">
+      <label for="block-reward">Block Reward</label>
+      <input type="number" class="form-control" id="block-reward" 
+             placeholder="Block Reward"
+             formControlName="blockReward">
+    </div>
+    <div *ngIf="settingsForm.controls['blockReward'].errors?.pattern">Enter valid character</div>
+  
+    <div class="form-group">
+      <label for="difficulty">Difficulty</label>
+      <input type="number" class="form-control" id="difficulty" 
+             placeholder="Difficulty"
+             formControlName="difficulty">
+    </div>
+    <div *ngIf="settingsForm.controls['difficulty'].errors?.pattern">Enter valid character</div>
+  
+    <div class="form-group">
+      <label for="block-transactions">Transactions Per Block</label>
+      <input type="number" class="form-control" id="block-transactions" 
+             placeholder="Transactions per block"
+             formControlName="blockTransactions">
+    </div>
+    <div *ngIf="settingsForm.controls['blockTransactions'].errors?.max">max should be 5</div>
+    <div *ngIf="settingsForm.controls['blockTransactions'].errors?.pattern">Enter valid character</div>
+    <button [disabled]="!settingsForm.valid" type="button" (click)="setSettings()" class="btn btn-primary w-100">Save</button>
+  </form>

@@ -3,7 +3,7 @@
                 <app-left-nav></app-left-nav>
         </div>
     
-        <div class="col-sm-9">  
+        <div class="col-sm-9 justify-content-center blockchain-container">  
             <div *ngIf="!blockchainCreated" class="row ml-0 justify-content-center">
                 <button class="btn btn-primary" (click)="createGenesisBlock()">
                         <i class="fa fa-plus"></i>
@@ -12,7 +12,7 @@
             </div>
     
             <div class="row justify-content-center" *ngIf="blockchainCreated">
-                <div *ngIf="blockchainView" class="d-flex">
+                <div *ngIf="blockchainView" class="d-flex w-100">
                     <app-block-view *ngFor="let block of blockChain.chain; let i = index"
                                     [block]="block"
                                     [index]="i">
@@ -28,19 +28,18 @@
                     <app-pending-transactions [pendingTransactions]="blockChain.pendingTransactions">
                     </app-pending-transactions>
                 </div>
+
+                <div *ngIf="settingsView">
+                        <app-settings-view></app-settings-view>
+                    </div>
     
             </div>
             
-            <div *ngIf="blockchainCreated && !addNewTransactionView" class="row chain-button-panel justify-content-center mt-4">
-                <div *ngIf="pendingTransactionView && blockChain.pendingTransactions.length>0" class="d-flex justify-content-center mb-2">
-                    <button type="button" class="btn btn-outline-info" (click)="mineBlock()">Mine Block!</button>
-                </div>
-            
-                <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-outline-success" (click)="setAddNewTransactionView()">
-                        {{content.addTransactions}}
+            <div *ngIf="pendingTransactionView && blockChain.pendingTransactions.length>0" class="row justify-content-center mt-4">
+                    <button type="button" class="btn btn-secondary" (click)="mineBlock()">
+                        <span *ngIf="miningStarted" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>    
+                        Mine Block!
                     </button>
-                </div>
             </div>
     
         </div>

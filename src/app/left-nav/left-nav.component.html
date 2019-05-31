@@ -7,11 +7,17 @@
         <span class="ml-1">{{content.dashboard}}</span>
     </button>
     <button type="button" class="btn btn-outline-dark list-group-item list-group-item-action"
+            (click)="setAddTransactionView()">
+        <i class="fa fa-plus"></i>
+        <span class="ml-1">{{content.addTransactions}}</span>
+    </button>
+    <button type="button" class="btn btn-outline-dark list-group-item list-group-item-action"
             (click)="setPendingTransactionView()">
       <i class="fa fa-bitcoin"></i>
       <span class="ml-1">{{content.pendingTransactions}}</span>
     </button>
-    <button type="button" class="btn btn-outline-dark list-group-item list-group-item-action">
+    <button type="button" class="btn btn-outline-dark list-group-item list-group-item-action"
+            (click)="setSettingsView()">
         <i class="fa fa-cog"></i>
         <span class="ml-1">{{content.settings}}</span>
     </button>

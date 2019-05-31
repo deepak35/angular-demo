@@ -23,6 +23,17 @@ export class LeftNavComponent implements OnInit {
     newView[Content.dashboardView.blockchain] = true;
     newView[Content.dashboardView.addTransaction] = false;
     newView[Content.dashboardView.pendingTransaction] = false;
+    newView[Content.dashboardView.settings] = false;
+
+    this._dashboardViewService.setDashboardView(newView);
+  }
+
+  setAddTransactionView() {
+    const newView = {};
+    newView[Content.dashboardView.blockchain] = false;
+    newView[Content.dashboardView.addTransaction] = true;
+    newView[Content.dashboardView.pendingTransaction] = false;
+    newView[Content.dashboardView.settings] = false;
 
     this._dashboardViewService.setDashboardView(newView);
   }
@@ -32,6 +43,17 @@ export class LeftNavComponent implements OnInit {
     newView[Content.dashboardView.blockchain] = false;
     newView[Content.dashboardView.addTransaction] = false;
     newView[Content.dashboardView.pendingTransaction] = true;
+    newView[Content.dashboardView.settings] = false;
+
+    this._dashboardViewService.setDashboardView(newView);
+  }
+
+  setSettingsView(){
+    const newView = {};
+    newView[Content.dashboardView.blockchain] = false;
+    newView[Content.dashboardView.addTransaction] = false;
+    newView[Content.dashboardView.pendingTransaction] = false;
+    newView[Content.dashboardView.settings] = true;
 
     this._dashboardViewService.setDashboardView(newView);
   }

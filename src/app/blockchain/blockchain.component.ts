@@ -19,7 +19,9 @@ export class BlockchainComponent implements OnInit {
   public blockchainView: boolean;
   public addNewTransactionView: boolean;
   public pendingTransactionView: boolean;
+  public settingsView: boolean;
   public blockChain: Blockchain;
+  public miningStarted: boolean;
 
   constructor(private _blockchainService: BlockchainService,
               private _dashboardViewService: DashboardViewObservableService,
@@ -45,20 +47,16 @@ export class BlockchainComponent implements OnInit {
   }
 
   createGenesisBlock() {
+// tslint:disable-next-line: max-line-length
     this.blockChain = this._blockchainService.createBlockchain(ChainProperties.difficulty, ChainProperties.blockReward, ChainProperties.transactionsPerBlock);
     this.blockchainCreated = true;
     this.blockchainView = true;
   }
 
-  setAddNewTransactionView(){
-    this.blockchainView = false;
-    this.pendingTransactionView = false;
-
-    this.addNewTransactionView = true;
-  }
-
   mineBlock(){
+    this.miningStarted = true;
     this.blockChain = this._blockchainService.mineBlock(this.blockChain);
+    this.miningStarted = false;
   }
-  
+
 }

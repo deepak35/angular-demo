@@ -1,5 +1,6 @@
-.blockchain {
-    justify-content: center;
+.blockchain-container {
+    overflow-x: auto;
+    flex-direction: column;
 }
 
 .chain-button-panel {

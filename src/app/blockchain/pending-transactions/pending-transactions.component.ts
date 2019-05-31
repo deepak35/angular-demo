@@ -12,12 +12,12 @@ export class PendingTransactionsComponent implements OnInit {
   public content: any = Content;
   @Input('pendingTransactions')
   public pendingTransactions: Array<Transaction> = [];
-  //public pendingTransactionsAvalable = false;
+
   constructor() { }
 
   ngOnInit() {
     console.log('PENDING VIEW');
-    
+
 
   }
 

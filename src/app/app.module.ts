@@ -10,6 +10,7 @@ import { BlockViewComponent } from './blockchain/block-view/block-view.component
 import { AddNewTransactionComponent } from './blockchain/add-new-transaction/add-new-transaction.component';
 import { CommonComponentModule } from './common/common.module';
 import { PendingTransactionsComponent } from './blockchain/pending-transactions/pending-transactions.component';
+import { SettingsViewComponent } from './blockchain/settings-view/settings-view.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PendingTransactionsComponent } from './blockchain/pending-transactions/
     BlockchainComponent,
     BlockViewComponent,
     AddNewTransactionComponent,
-    PendingTransactionsComponent
+    PendingTransactionsComponent,
+    SettingsViewComponent
   ],
   imports: [
     BrowserModule,
