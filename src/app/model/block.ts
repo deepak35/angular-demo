@@ -8,8 +8,8 @@ export class Block {
     public nonce: any = 0;
     public blockHash: any;
 
-    constructor(timestamp: any, transactions: any, previousBlockHash: any) {
-        this.timestamp = timestamp;
+    constructor(timestamp: Date, transactions: any, previousBlockHash: any) {
+        this.timestamp = timestamp.getTime();
         this.transactions = transactions;
         this.previousBlockHash = previousBlockHash;
     }

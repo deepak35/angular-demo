@@ -16,10 +16,17 @@ export class BlockViewComponent implements OnInit {
   @Input('index')
   public index: number;
 
+  public transactions: Array<any>;
+  public selectedBlock: number = null;
   constructor() { }
 
   ngOnInit() {
     this.content = Content;
+  }
+
+  transactionDetails(transactions: any, index: number) {
+    this.transactions = transactions;
+    this.selectedBlock = index;
   }
 
 }

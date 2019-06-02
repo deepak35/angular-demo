@@ -1,8 +1,14 @@
 .blockchain-container {
-    overflow-x: auto;
-    flex-direction: column;
+    padding: 2rem 1.5rem;
+    padding-bottom: 0;
+    position: absolute;
+    margin-top: 2.5rem;
 }
 
 .chain-button-panel {
     flex-direction: column;
+}
+
+.app-block {
+    width: 20rem;
 }

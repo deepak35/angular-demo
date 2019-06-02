@@ -1,47 +1,44 @@
-<div class="row">
-        <div class="col-sm-3">
-                <app-left-nav></app-left-nav>
-        </div>
-    
-        <div class="col-sm-9 justify-content-center blockchain-container">  
-            <div *ngIf="!blockchainCreated" class="row ml-0 justify-content-center">
-                <button class="btn btn-primary" (click)="createGenesisBlock()">
-                        <i class="fa fa-plus"></i>
-                        <span class="ml-2">{{content.createBlockchain}}</span>
-                </button>
-            </div>
-    
-            <div class="row justify-content-center" *ngIf="blockchainCreated">
-                <div *ngIf="blockchainView" class="d-flex w-100">
-                    <app-block-view *ngFor="let block of blockChain.chain; let i = index"
-                                    [block]="block"
-                                    [index]="i">
-                    </app-block-view>
-                </div>
-    
-                <div *ngIf="addNewTransactionView">
-                    <app-add-new-transaction >
-                    </app-add-new-transaction>
-                </div>
-    
-                <div *ngIf="pendingTransactionView">
-                    <app-pending-transactions [pendingTransactions]="blockChain.pendingTransactions">
-                    </app-pending-transactions>
-                </div>
 
-                <div *ngIf="settingsView">
-                        <app-settings-view></app-settings-view>
-                    </div>
-    
-            </div>
-            
-            <div *ngIf="pendingTransactionView && blockChain.pendingTransactions.length>0" class="row justify-content-center mt-4">
-                    <button type="button" class="btn btn-secondary" (click)="mineBlock()">
-                        <span *ngIf="miningStarted" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>    
-                        Mine Block!
-                    </button>
-            </div>
-    
-        </div>
-    
+<app-left-nav></app-left-nav>
+
+<div class="justify-content-center blockchain-container w-100">  
+    <div *ngIf="!blockchainCreated" class="row ml-0 justify-content-center">
+        <button class="btn btn-primary" (click)="createGenesisBlock()">
+                <i class="fa fa-plus"></i>
+                <span class="ml-2">{{content.createBlockchain}}</span>
+        </button>
     </div>
+
+    <div class="row justify-content-center main-view " *ngIf="blockchainCreated">
+        <div *ngIf="blockchainView" class="d-flex justify-content-center flex-wrap">
+            <app-block-view *ngFor="let block of blockChain.chain; let i = index"
+                            [block]="block"
+                            [index]="i"
+                            class="app-block">
+            </app-block-view>
+        </div>
+
+        <div *ngIf="addNewTransactionView">
+            <app-add-new-transaction >
+            </app-add-new-transaction>
+        </div>
+
+        <div *ngIf="pendingTransactionView">
+            <app-pending-transactions [pendingTransactions]="blockChain.pendingTransactions">
+            </app-pending-transactions>
+        </div>
+
+        <div *ngIf="settingsView">
+                <app-settings-view></app-settings-view>
+            </div>
+
+    </div>
+    
+    <div *ngIf="pendingTransactionView && blockChain.pendingTransactions.length>0" class="row justify-content-center mt-4">
+            <button type="button" class="btn btn-secondary" (click)="mineBlock()">
+                <span *ngIf="miningStarted" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>    
+                Mine Block!
+            </button>
+    </div>
+
+</div>

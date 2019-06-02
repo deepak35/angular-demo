@@ -11,8 +11,8 @@ export class BlockchainService {
   constructor() { }
 
   public createGenesisBlock(difficulty: number){
-    const genesisTransaction = new Transaction('SYSTEM', 'user1', 50);
-    const genesisBlock = new Block(new Date(), [genesisTransaction], '0');
+    const genesisTransaction = new Transaction(new Date(), 'SYSTEM', 'user1', 50);
+    const genesisBlock = new Block(new Date(), [genesisTransaction], new Array(64).join('0'));
     genesisBlock.mineBlock(difficulty);
 
     return genesisBlock;

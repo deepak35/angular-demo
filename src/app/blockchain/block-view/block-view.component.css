@@ -1,3 +1,48 @@
 .block {
-    width: 16rem;
+    flex-direction: column;
+    word-break: break-word;
 }
+
+.timestamp, .previousHash, .nonce, .blockHash {
+    flex-direction: column;
+    align-items: center;
+    border: .1rem solid grey;
+    border-top: 0;
+    padding: .1rem .1rem;
+}
+
+.timestamp {
+    border-top: .1rem solid grey;
+}
+
+.details-btn {
+    border: .1rem solid grey;
+    border-top: 0;
+}
+
+.details-btn button {
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+}
+/* .previousHash{
+    flex-direction: column;
+    
+    align-items: center;
+}
+.nonce {
+    flex-direction: column;
+    
+    align-items: center;
+}
+.blockHash {
+    flex-direction: column;
+    
+    align-items: center;
+} */
+
+@media only screen and (max-width: 759px) {
+    .block {
+        flex-direction: column;
+    }
+  }

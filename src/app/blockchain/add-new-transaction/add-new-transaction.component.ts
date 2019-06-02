@@ -30,7 +30,7 @@ export class AddNewTransactionComponent implements OnInit {
   }
 
   addTransaction(){
-    const transaction = new Transaction(this.newTransactionForm.controls['from'].value,
+    const transaction = new Transaction(new Date(), this.newTransactionForm.controls['from'].value,
                                       this.newTransactionForm.controls['to'].value,
                                       this.newTransactionForm.controls['amount'].value);
 

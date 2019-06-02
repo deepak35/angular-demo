@@ -1,23 +1,51 @@
-<div class="card block mr-2" [ngClass]="{'mr-0': index>0}">
-    <div class="card-header">{{content.blockContent.header}} #{{index}}</div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-          <h5 class="card-title">{{content.blockContent.timestamp}}</h5>
-          <p class="card-text">{{block.timestamp}}</p>
-      </li>
-      <li class="list-group-item">
-          <h5 class="card-title">{{content.blockContent.previousHash}}</h5>
-          <p class="card-text">{{block.previousBlockHash}}</p>
-      </li>
-      <li class="list-group-item">
-          <h5 class="card-title">{{content.blockContent.nonce}}</h5>
-          <p class="card-text">{{block.nonce}}</p>
-      </li>
-      <li class="list-group-item border-bottom-0">
-          <h5 class="card-title">{{content.blockContent.hash}}</h5>
-          <p class="card-text">{{block.blockHash}}</p>
-      </li>
-    </ul>
+<div class="block d-flex mr-2 mb-2">
+    
+        <div class="d-flex timestamp">
+            <div class="label">
+                <strong>{{content.blockContent.timestamp}}</strong>
+            </div> 
+            <div class="value">
+                <div>{{block.timestamp}}</div>
+            </div>
+        </div>
 
-    <button href="#" class="btn btn-outline-secondary">{{content.blockContent.transactionDetailsButtonLabel}}</button>
-  </div>
+        <div class="d-flex previousHash">
+            <div class="label">
+                    <strong>{{content.blockContent.previousHash}}</strong>
+            </div>
+            <div class="value">
+                    <div>{{block.previousBlockHash}}</div>
+            </div>
+        </div>
+
+        <div class="d-flex nonce">
+            <div class="label">
+                <strong>{{content.blockContent.nonce}}</strong>
+            </div>
+            <div class="value">
+                <div>{{block.nonce}}</div>
+            </div>
+        </div>
+
+        <div class="d-flex blockHash">
+            <div class="label">
+                <strong>{{content.blockContent.hash}}</strong>
+            </div>
+            <div class="value">
+                <div>{{block.blockHash}}</div>
+            </div>
+        </div>
+
+        <div class="d-flex details-btn">
+                <button type="button" (click)="transactionDetails()" 
+                        class="btn btn-primary"
+                        data-toggle="modal" data-target="#transaction-modal">
+                        {{content.blockContent.transactionDetailsButtonLabel}}
+                </button>        
+        </div>
+    
+</div>
+
+<app-transaction-modal [transactions]="block.transactions"
+                       [blockIndex]="index">
+</app-transaction-modal>

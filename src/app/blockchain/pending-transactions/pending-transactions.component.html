@@ -1,15 +1,16 @@
 <div class="row justify-content-center">
 
-  <div *ngIf="pendingTransactions.length == 0" class="alert alert-info" role="alert">
+  <div *ngIf="pendingTransactions && pendingTransactions.length == 0" class="alert alert-info" role="alert">
       No pending transactions. Click add transactiosn to add.
   </div>
     
-  <div *ngIf="pendingTransactions.length>0">
+  <div *ngIf="pendingTransactions && pendingTransactions.length>0">
     <div class="row">
-        <table class="table">
-            <thead>
+        <table class="table table-bordered">
+            <thead class="thead-light">
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Timestamp</th>
                 <th scope="col">Sender</th>
                 <th scope="col">Reciever</th>
                 <th scope="col">Amount</th>
@@ -18,6 +19,7 @@
             <tbody>
               <tr *ngFor="let transaction of pendingTransactions; let i = index">
                 <th scope="row">{{i}}</th>
+                <td>{{transaction.timestamp}}</td>
                 <td>{{transaction.sender}}</td>
                 <td>{{transaction.reciever}}</td>
                 <td>{{transaction.amount}}</td>

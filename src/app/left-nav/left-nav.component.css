@@ -1,1 +1,13 @@
+.left-nav-btn {
+    border-radius: 0;
+    border-right: 0;
+}
 
+.nav-item {
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: lightcyan;
+}

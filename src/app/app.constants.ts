@@ -16,7 +16,7 @@ export const Content = {
         header: 'Block',
         timestamp: 'Timestamp',
         nonce: 'Nonce',
-        previousHash: 'Previous Block Hash',
+        previousHash: 'Previous Hash',
         hash: 'Block Hash',
         transactionDetailsButtonLabel: 'Transaction Details'
     },
