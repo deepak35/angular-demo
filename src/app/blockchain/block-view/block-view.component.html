@@ -37,7 +37,7 @@
         </div>
 
         <div class="d-flex details-btn">
-                <button type="button" (click)="transactionDetails()" 
+                <button type="button" (click)="setTransactionDetails(block.transactions, index)" 
                         class="btn btn-primary"
                         data-toggle="modal" data-target="#transaction-modal">
                         {{content.blockContent.transactionDetailsButtonLabel}}
@@ -45,7 +45,3 @@
         </div>
     
 </div>
-
-<app-transaction-modal [transactions]="block.transactions"
-                       [blockIndex]="index">
-</app-transaction-modal>

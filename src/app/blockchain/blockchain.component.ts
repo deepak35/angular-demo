@@ -6,6 +6,8 @@ import { ChainProperties } from '../model/blockchainProperties';
 import { Content } from 'src/app/app.constants';
 import { AddTransactionService } from '../services/add-transaction.service';
 import { DashboardViewObservableService } from '../services/dashboard-view.observable.service';
+import { Transaction } from '../model/transaction';
+import { BlockchainSettingsObservableService } from '../services/blockchain-settings.observable.service';
 
 @Component({
   selector: 'app-blockchain',
@@ -22,15 +24,17 @@ export class BlockchainComponent implements OnInit {
   public settingsView: boolean;
   public blockChain: Blockchain;
   public miningStarted: boolean;
+  public transactions: Array<Transaction>;
+  public blockIndex: number;
 
   constructor(private _blockchainService: BlockchainService,
               private _dashboardViewService: DashboardViewObservableService,
-              private _transactionService: AddTransactionService) { }
+              private _transactionService: AddTransactionService,
+              private _blockchainSettingsService: BlockchainSettingsObservableService) { }
 
   ngOnInit() {
     this.createGenesisBlock();
     this.content = Content;
-    console.log("BLOCKCHAIN VIEW");
     this._dashboardViewService.getDashboardView().subscribe(dashboardView => {
       for (const view in dashboardView) {
         if (dashboardView.hasOwnProperty(view)) {
@@ -44,6 +48,15 @@ export class BlockchainComponent implements OnInit {
         console.log(this.blockChain.pendingTransactions);
       }
     });
+    this._blockchainSettingsService.getSettings().subscribe(newSetting => {
+      if (newSetting){
+        for (const property in newSetting) {
+          if (newSetting.hasOwnProperty(property)) {
+            this.blockChain[property] = newSetting[property];
+          }
+        }
+      }
+    })
   }
 
   createGenesisBlock() {
@@ -54,9 +67,18 @@ export class BlockchainComponent implements OnInit {
   }
 
   mineBlock(){
-    this.miningStarted = true;
-    this.blockChain = this._blockchainService.mineBlock(this.blockChain);
-    this.miningStarted = false;
+    if (this.blockChain.pendingTransactions.length > 0) {
+      this.miningStarted = true;
+      this.blockChain = this._blockchainService.generateNewBlock(this.blockChain);
+      setTimeout(() => {
+        this.miningStarted = false;
+      }, 1000);
+    }
+  }
+
+  transactionDetails(details: any){
+    this.transactions = details.transactions;
+    this.blockIndex = details.blockIndex;
   }
 
 }

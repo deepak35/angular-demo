@@ -25,7 +25,7 @@ export class BlockchainService {
     return newBlockchain;
   }
 
-  public mineBlock(blockchain: Blockchain){
+  public generateNewBlock(blockchain: Blockchain){
     const newTransactions: Array<Transaction> = blockchain.pendingTransactions.splice(0, blockchain.blockTransactionsNumber);
     const lastBlock = blockchain.getLastBlock();
     const newBlock: Block = new Block(new Date(), newTransactions, lastBlock.blockHash);

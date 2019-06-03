@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Content } from 'src/app/app.constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChainProperties } from 'src/app/model/blockchainProperties';
+import { BlockchainSettingsObservableService } from 'src/app/services/blockchain-settings.observable.service';
 
 @Component({
   selector: 'app-settings-view',
@@ -13,7 +14,8 @@ export class SettingsViewComponent implements OnInit {
   public settingsForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private _blockchainSettingsService: BlockchainSettingsObservableService) { }
 
   ngOnInit() {
     this.settingsForm = this.fb.group({
@@ -24,7 +26,13 @@ export class SettingsViewComponent implements OnInit {
   }
 
   setSettings() {
-
+    this._blockchainSettingsService.setSettings(
+      {
+        'difficulty': this.settingsForm.controls['difficulty'].value,
+        'blockReward': this.settingsForm.controls['blockReward'].value,
+        'blockTransactionsNumber': this.settingsForm.controls['blockTransactions'].value,
+      }
+    )
   }
 
 }

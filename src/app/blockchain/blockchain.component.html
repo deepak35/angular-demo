@@ -14,8 +14,12 @@
             <app-block-view *ngFor="let block of blockChain.chain; let i = index"
                             [block]="block"
                             [index]="i"
+                            (transactionDetails)="transactionDetails($event)"
                             class="app-block">
             </app-block-view>
+            <app-transaction-modal [transactions]="transactions"
+                                   [blockIndex]="blockIndex">
+            </app-transaction-modal>
         </div>
 
         <div *ngIf="addNewTransactionView">

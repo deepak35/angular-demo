@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Block } from '../../model/block';
 import { Content } from 'src/app/app.constants';
 
@@ -16,6 +16,9 @@ export class BlockViewComponent implements OnInit {
   @Input('index')
   public index: number;
 
+  @Output('transactionDetails')
+  public transactionDetails = new EventEmitter();
+
   public transactions: Array<any>;
   public selectedBlock: number = null;
   constructor() { }
@@ -24,9 +27,8 @@ export class BlockViewComponent implements OnInit {
     this.content = Content;
   }
 
-  transactionDetails(transactions: any, index: number) {
-    this.transactions = transactions;
-    this.selectedBlock = index;
+  setTransactionDetails(transactions: any, index: number) {
+    this.transactionDetails.emit({ 'transactions' : transactions, 'blockIndex' : index});
   }
 
 }

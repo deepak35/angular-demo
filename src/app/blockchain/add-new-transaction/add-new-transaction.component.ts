@@ -20,7 +20,6 @@ export class AddNewTransactionComponent implements OnInit {
 
   ngOnInit() {
     this.content = Content;
-    console.log("ADD VIEW");
 
     this.newTransactionForm = this.fb.group({
       from: ['', [Validators.required, Validators.pattern('[0-9a-zA-Z]*')]],
