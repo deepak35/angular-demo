@@ -13,7 +13,7 @@
             <div class="label">
                     <strong>{{content.blockContent.previousHash}}</strong>
             </div>
-            <div class="value">
+            <div class="value" [ngStyle]="{'color': '#'+block.previousBlockHash.substr(-6)}">
                     <div>{{block.previousBlockHash}}</div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="label">
                 <strong>{{content.blockContent.hash}}</strong>
             </div>
-            <div class="value">
+            <div class="value" [ngStyle]="{'color': '#'+block.blockHash.substr(-6)}">
                 <div>{{block.blockHash}}</div>
             </div>
         </div>

@@ -5,7 +5,7 @@ export const Content = {
         pendingTransaction: 'pendingTransactionView',
         settings: 'settingsView'
     },
-    dashboard : 'Dashboard',
+    dashboard : 'Home',
     settings : 'Settings',
     pendingTransactions: 'Pending Transactions',
 

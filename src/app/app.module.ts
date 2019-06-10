@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { TransactionModalComponent } from './blockchain/transaction-modal/transa
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     CommonComponentModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })

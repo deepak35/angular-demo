@@ -1,5 +1,6 @@
 
-<form [formGroup]="newTransactionForm">
+<div class="row">
+<form [formGroup]="newTransactionForm" class="w-100">
   <div class="form-group">
     <label for="fromAddress">From</label>
     <input type="input" class="form-control" id="fromAddress" 
@@ -26,8 +27,9 @@
   <div *ngIf="newTransactionForm.controls['amount'].errors?.pattern">Enter valid character</div>
   <button [disabled]="!newTransactionForm.valid" type="submit" (click)="addTransaction()" class="btn btn-primary w-100">Add transaction</button>
 </form>
+</div>
 
-<div *ngIf="showSuccessMsg" class="row mt-4">
+<div [@openClose]="showSuccessMsg ? 'open' : 'closed'" class="row mt-4">
   <app-alert-message [typeOfAlert]="content.alertType.success"
                      [alertMessage]="content.alertMessages.pendingTransaction">
   </app-alert-message>

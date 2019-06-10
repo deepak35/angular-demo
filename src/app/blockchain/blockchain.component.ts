@@ -8,6 +8,7 @@ import { AddTransactionService } from '../services/add-transaction.service';
 import { DashboardViewObservableService } from '../services/dashboard-view.observable.service';
 import { Transaction } from '../model/transaction';
 import { BlockchainSettingsObservableService } from '../services/blockchain-settings.observable.service';
+import { BlockchainUtilityObservableService } from '../services/blockchain-utility.observable.service';
 
 @Component({
   selector: 'app-blockchain',
@@ -30,7 +31,8 @@ export class BlockchainComponent implements OnInit {
   constructor(private _blockchainService: BlockchainService,
               private _dashboardViewService: DashboardViewObservableService,
               private _transactionService: AddTransactionService,
-              private _blockchainSettingsService: BlockchainSettingsObservableService) { }
+              private _blockchainSettingsService: BlockchainSettingsObservableService,
+              private _blockchainUtilityObservableService: BlockchainUtilityObservableService) { }
 
   ngOnInit() {
     this.createGenesisBlock();
@@ -56,6 +58,10 @@ export class BlockchainComponent implements OnInit {
           }
         }
       }
+    });
+    this._blockchainUtilityObservableService.getMiningStarted().subscribe(miningStarted => {
+      console.log("miningStarted", miningStarted)
+      this.miningStarted = miningStarted;
     })
   }
 
@@ -68,17 +74,18 @@ export class BlockchainComponent implements OnInit {
 
   mineBlock(){
     if (this.blockChain.pendingTransactions.length > 0) {
-      this.miningStarted = true;
+      //this.miningStarted = true;
       this.blockChain = this._blockchainService.generateNewBlock(this.blockChain);
-      setTimeout(() => {
-        this.miningStarted = false;
-      }, 1000);
     }
   }
 
   transactionDetails(details: any){
     this.transactions = details.transactions;
     this.blockIndex = details.blockIndex;
+  }
+
+  getBalance(address: string){
+
   }
 
 }

@@ -3,10 +3,34 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddTransactionService } from '../../services/add-transaction.service';
 import { Transaction } from '../../model/transaction';
 import { Content } from 'src/app/app.constants';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 @Component({
   selector: 'app-add-new-transaction',
   templateUrl: './add-new-transaction.component.html',
-  styleUrls: ['./add-new-transaction.component.css']
+  styleUrls: ['./add-new-transaction.component.css'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        opacity: 1
+      })),
+      state('closed', style({
+        opacity: 0
+      })),
+      transition('open => closed', [
+        animate('0.5s ease-out')
+      ]),
+      transition('closed => open', [
+        animate('0s')
+      ]),
+    ])
+  ]
 })
 export class AddNewTransactionComponent implements OnInit {
 
@@ -36,6 +60,10 @@ export class AddNewTransactionComponent implements OnInit {
     this._transactionService.setTransaction(transaction);
 
     this.showSuccessMsg = true;
+    let self = this;
+    setTimeout(() => {
+      self.showSuccessMsg =  false;
+    }, 1000);
   }
 
 }
