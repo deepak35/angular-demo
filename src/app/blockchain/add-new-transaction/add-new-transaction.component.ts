@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddTransactionService } from '../../services/add-transaction.service';
 import { Transaction } from '../../model/transaction';
 import { Content } from 'src/app/app.constants';
+import {ec} from 'elliptic';
 import {
   trigger,
   state,
@@ -10,6 +11,9 @@ import {
   animate,
   transition
 } from '@angular/animations';
+
+const EC = new ec('secp256k1');
+
 @Component({
   selector: 'app-add-new-transaction',
   templateUrl: './add-new-transaction.component.html',
@@ -57,10 +61,12 @@ export class AddNewTransactionComponent implements OnInit {
                                       this.newTransactionForm.controls['to'].value,
                                       this.newTransactionForm.controls['amount'].value);
 
+    const prKey = EC.keyFromPrivate(this.content.private);
+    transaction.signTransaction(prKey);
     this._transactionService.setTransaction(transaction);
 
     this.showSuccessMsg = true;
-    let self = this;
+    const self = this;
     setTimeout(() => {
       self.showSuccessMsg =  false;
     }, 1000);

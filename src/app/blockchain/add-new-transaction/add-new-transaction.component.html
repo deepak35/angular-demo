@@ -1,13 +1,11 @@
-
-<div class="row">
-<form [formGroup]="newTransactionForm" class="w-100">
+<form [formGroup]="newTransactionForm">
   <div class="form-group">
     <label for="fromAddress">From</label>
     <input type="input" class="form-control" id="fromAddress" 
            placeholder="Enter From Address"
            formControlName="from">
   </div>
-  <div *ngIf="newTransactionForm.controls['from'].errors?.pattern">Enter valid character</div>
+  <div class="mb-2 errorMsg" *ngIf="newTransactionForm.controls['from'].errors?.pattern">Enter valid character</div>
 
   <div class="form-group">
     <label for="toAddress">To</label>
@@ -15,7 +13,7 @@
            placeholder="Enter To Address"
            formControlName="to">
   </div>
-  <div *ngIf="newTransactionForm.controls['to'].errors?.pattern">Enter valid character</div>
+  <div class="mb-2 errorMsg" *ngIf="newTransactionForm.controls['to'].errors?.pattern">Enter valid character</div>
 
   <div class="form-group">
     <label for="amount">Amount</label>
@@ -23,11 +21,10 @@
            placeholder="Enter Amount to send"
            formControlName="amount">
   </div>
-  <div *ngIf="newTransactionForm.controls['amount'].errors?.min">min should be 0.001</div>
-  <div *ngIf="newTransactionForm.controls['amount'].errors?.pattern">Enter valid character</div>
+  <div class="mb-2 errorMsg" *ngIf="newTransactionForm.controls['amount'].errors?.min">min should be 0.001</div>
+  <div class="mb-2 errorMsg" *ngIf="newTransactionForm.controls['amount'].errors?.pattern">Enter valid character</div>
   <button [disabled]="!newTransactionForm.valid" type="submit" (click)="addTransaction()" class="btn btn-primary w-100">Add transaction</button>
 </form>
-</div>
 
 <div [@openClose]="showSuccessMsg ? 'open' : 'closed'" class="row mt-4">
   <app-alert-message [typeOfAlert]="content.alertType.success"

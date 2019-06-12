@@ -26,3 +26,10 @@
     <div *ngIf="settingsForm.controls['blockTransactions'].errors?.pattern">Enter valid character</div>
     <button [disabled]="!settingsForm.valid" type="button" (click)="setSettings()" class="btn btn-primary w-100">Save</button>
   </form>
+
+  <div [@openClose]="showSuccessMsg ? 'open' : 'closed'" class="row mt-4 align-content-center">
+    <app-alert-message [typeOfAlert]="content.alertType.success"
+                       [alertMessage]="content.alertMessages.settingsUpdate"
+                       class="w-100">
+    </app-alert-message>
+  </div>
