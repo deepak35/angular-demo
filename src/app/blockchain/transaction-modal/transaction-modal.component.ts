@@ -16,8 +16,6 @@ export class TransactionModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.transactions , "\n", this.blockIndex);
-    
   }
 
 }

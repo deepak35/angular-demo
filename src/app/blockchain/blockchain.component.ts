@@ -9,7 +9,8 @@ import { DashboardViewObservableService } from '../services/dashboard-view.obser
 import { Transaction } from '../model/transaction';
 import { BlockchainSettingsObservableService } from '../services/blockchain-settings.observable.service';
 import { BlockchainUtilityObservableService } from '../services/blockchain-utility.observable.service';
-
+import { ec } from 'elliptic';
+const EC = new ec('secp256k1');
 @Component({
   selector: 'app-blockchain',
   templateUrl: './blockchain.component.html',
@@ -62,7 +63,7 @@ export class BlockchainComponent implements OnInit {
     this._blockchainUtilityObservableService.getMiningStarted().subscribe(miningStarted => {
       console.log("miningStarted", miningStarted)
       this.miningStarted = miningStarted;
-    })
+    });
   }
 
   createGenesisBlock() {

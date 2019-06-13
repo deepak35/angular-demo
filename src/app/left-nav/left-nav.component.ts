@@ -14,8 +14,14 @@ export class LeftNavComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log("LEFT VIEW");
-
+    document.addEventListener('click', function(event: any){
+      const navBar = document.getElementById('navbarNav');
+      if (navBar) {
+        if (navBar.classList.contains('show')) {
+          navBar.classList.remove('show');
+        }
+      }
+    });
   }
 
   setBlockchainView(){
