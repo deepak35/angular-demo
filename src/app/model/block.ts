@@ -1,6 +1,7 @@
 import {SHA256} from 'crypto-js';
 import { Transaction } from './transaction';
 import { BlockchainUtilityObservableService } from '../services/blockchain-utility.observable.service';
+import { Injector, Injectable } from '@angular/core';
 
 export class Block {
     public timestamp: any;
@@ -8,8 +9,7 @@ export class Block {
     public previousBlockHash: any;
     public nonce: any = 0;
     public blockHash: any;
-
-    private blockchainUtilityObservable: BlockchainUtilityObservableService = new BlockchainUtilityObservableService();
+    public miningStarted:boolean;
 
     constructor(timestamp: Date, transactions: Array<Transaction>, previousBlockHash: any) {
         this.timestamp = timestamp.getTime();
@@ -24,12 +24,12 @@ export class Block {
     public mineBlock(difficulty: number) {
         const checkString = Array(difficulty).fill(0).join('');
         let hash = this.calculateBlockHash();
-        this.blockchainUtilityObservable.setMiningStarted(true);
+        //this.miningStarted = true;
         while (hash.substr(0, difficulty) !== checkString) {
           this.nonce += 1;
           hash = this.calculateBlockHash();
         }
-        this.blockchainUtilityObservable.setMiningStarted(false);
         this.blockHash = hash;
+        return true;
     }
 }

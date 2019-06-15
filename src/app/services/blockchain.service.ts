@@ -5,6 +5,8 @@ import { Transaction } from '../model/transaction';
 import { Content } from '../app.constants';
 import { ec } from 'elliptic';
 const EC = new ec('secp256k1');
+const pubKey = EC.keyFromPublic(Content.public, 'hex');
+const prKey = EC.keyFromPrivate(Content.private);
 @Injectable({
   providedIn: 'root'
 })
@@ -16,10 +18,12 @@ export class BlockchainService {
 
   public createGenesisBlock(difficulty: number){
     const genesisTransaction = new Transaction(new Date(), 'SYSTEM', 'user1', 50);
-    const genesisBlock = new Block(new Date(), [genesisTransaction], new Array(64).join('0'));
-    genesisBlock.mineBlock(difficulty);
-
-    return genesisBlock;
+    genesisTransaction.signTransaction(prKey);
+    if (genesisTransaction.verifySignature(pubKey)){
+      const genesisBlock = new Block(new Date(), [genesisTransaction], new Array(64).join('0'));
+      genesisBlock.mineBlock(difficulty);
+      return genesisBlock;
+    }
   }
 
   public createBlockchain(chainDifficulty: number, blockReward: number, blockTransactions: number){
@@ -42,8 +46,6 @@ export class BlockchainService {
   }
 
   public checkValidTransaction(transaction: Transaction) {
-    const pubKey = EC.keyFromPublic(Content.public, 'hex');
-
     return transaction.verifySignature(pubKey);
   }
 }
